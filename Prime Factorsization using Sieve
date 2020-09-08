@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+   long long  int primes[1000001];
+    
+         int maxN=1000000;
+         for(long long int i=1;i<=maxN;i++)
+         {
+             primes[i]=-1;
+         }
+         for( long long int i=2;i<= maxN;i++)
+         {
+             if(primes[i]==-1)
+             {
+                 for(long long int j=i;j<=maxN;j=j+i)
+                 {
+                     if(primes[j]==-1)
+                     {
+                         primes[j]=i;
+                     }
+                 }
+             }
+        }
+    int n;
+    cin>>n;
+    while(n>1)
+    {
+        cout<<primes[n]<<endl;
+        n=n/primes[n];
+    }
+}
