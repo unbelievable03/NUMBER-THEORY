@@ -1,65 +1,75 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define       fr(i,n)       for(int i=1;i<=n;i++)
-#define       long long     int lli
-using namespace std;
-#define       N             101
-int A[N][N],I[N][N];
-void mul(int I[N][N],int A [N][N],int dim)
+#define         int                 long long
+#define         pb                  push_back
+#define         all(x)              (x).begin(),(x).end()
+#define         sz(x)               (int)((x).size())
+#define         FOR(i,a,b)          for(int i=a;i<b;i++)
+#define         vi                  vector<int>
+#define         mod                 1000000007
+#define         endl                "\n"
+#define         N                   101
+int A[N][N];
+int I[N][N];
+void mult(int I[][N],int A[][N],int dim)
 {
     int res[dim+1][dim+1];
-    fr(i,dim)
-    {
-        fr(j,dim)
-        {
+    for(int i=1;i<=dim;i++){
+        for(int j=1;j<=dim;j++){
             res[i][j]=0;
-            fr(k,dim)
-            {
-                res[i][j]+=I[i][k]*A[k][j]; // simple code for matrix multiplication
+            for(int k=1;k<=dim;k++){
+                res[i][j]+= I[i][k]*A[k][j];
             }
         }
     }
-    fr(i,dim) fr(j,dim) I[i][j]=res[i][j];  // copying back result to I from res matrix
+    for(int i=1;i<=dim;i++){
+        for(int j=1;j<=dim;j++){
+            I[i][j]=res[i][j];
+        }
+    }
 }
 void power(int A[][N],int dim, int n)
 {
-    fr(i,dim) fr(j,dim) // identity matrix of order dim
-    {
-        if(i==j) I[i][j]=1;
-        else I[i][j]=0;
-    }
-//      fr(i,n)  mul(I,A,dim); // I=A*I  n times running or multiplying n times (THIS NAIVE APPROACH OF O((M^3)*N)
-    while(n)
-    {
-        if(n%2==0)
-        {
-            mul(A,A,dim);n=n/2;
-        }
-        else if(n%2!=0)    // this is matrix exponentiataion   with O((m^3)*log n)
-        {
-            mul(I,A,dim);n--;
+    for(int i=1;i<=dim;i++){
+        for(int j=1;j<=dim;j++){
+            if(i==j){I[i][j]=1;}
+            else{I[i][j]=0;}
         }
     }
-    fr(i,dim) fr(j,dim) A[i][j]=I[i][j];
-    
+    while(n>0){
+        if(n%2==0){
+            mult(A,A,dim);
+            n=n/2;
+        }
+        else{
+            mult(I,A,dim);
+            n--;
+        }
+    }
 }
-void printMat(int A[][N],int dim)
+void solve()
 {
-    fr(i,dim)
-    {
-        fr(j,dim)
-        {
-            cout<<A[i][j]<<" ";
+    int dim,n;
+    cin>>dim>>n;
+    for(int i=1;i<=dim;i++){
+        for(int j=1;j<=dim;j++){
+            cin>>A[i][j];
+        }
+    }
+    power(A,dim,n);
+    for(int i=1;i<=dim;i++){
+        for(int j=1;j<=dim;j++){
+            cout<<I[i][j]<<" ";
         }
         cout<<endl;
     }
 }
-int main()
+signed main()
 {
-    int dim,n;
-    cin>>dim>>n;
-    fr(i,dim) fr(j,dim)  cin>>A[i][j]; // input the matrix of order dim
-    power(A,dim,n);         // calculating power of matrix
-    printMat(A,dim);       // printing the resulted matrix
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    int T=1;
+    //cin>>T;
+    while(T--){solve();}
+    return 0;
 }
-
