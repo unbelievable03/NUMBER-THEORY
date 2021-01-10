@@ -1,32 +1,12 @@
-#include<bits/stdc++.h>
-using namespace std;
-int main()
-{
-   long long  int primes[1000001];
-    
-         int maxN=1000000;
-         for(long long int i=1;i<=maxN;i++)
-         {
-             primes[i]=-1;
-         }
-         for( long long int i=2;i<= maxN;i++)
-         {
-             if(primes[i]==-1)
-             {
-                 for(long long int j=i;j<=maxN;j=j+i)
-                 {
-                     if(primes[j]==-1)
-                     {
-                         primes[j]=i;
-                     }
-                 }
-             }
+int ar[100005];
+void sieve(){
+    int N=100005;
+   FOR(i,1,N+1){ar[i]=-1;}
+    FOR(i,2,N+1){
+        if(ar[i]==-1){
+            for(int j=i;j<=N;j+=i){
+                if(ar[j]==-1){ar[j]=i;}
+            }
         }
-    int n;
-    cin>>n;
-    while(n>1)
-    {
-        cout<<primes[n]<<endl;
-        n=n/primes[n];
     }
 }
