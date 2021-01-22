@@ -11,3 +11,5 @@ int modularexpo(int a , int n, int p){
     return res;
 }
 POWER ( A^N)%P
+TIME COMPLEXITY
+O(log n)
