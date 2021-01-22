@@ -1,4 +1,4 @@
-int modularexpo(int a , int n, int p){
+int power(int a , int n, int p){
     int res=1;
     while(n) {
        if(n%2==0) {
