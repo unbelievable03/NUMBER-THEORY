@@ -48,3 +48,5 @@ void power(int A[][N],int dim, int n){
         }
         cout<<endl;
     }
+TIME COMPLEXITY
+O(dim^3*(log(n))
