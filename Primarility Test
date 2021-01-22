@@ -5,3 +5,5 @@ bool isPrime(int n){
         }
     return true;
 }
+TIME COMPLEXITY
+O(sqrt(n)) 
