@@ -1,14 +1,15 @@
 
-        int pr[1000001];
+        int primes[1000001];
         int maxN=1000000;
         FOR(i,1,maxN+1){
             primes[i]=1;
         }
-        pr[0]=pr[1]=0;
+        primes[0]=primes[1]=0;
         FOR(i,2,sqrt(maxN)+1){
-            if(pr[i]){
+            if(primes[i]){
             for(int j=i*i;j<=maxN;j+=i){
-                    pr[j]=0;
+                    primes[j]=0;
                 }
             }
        }
+       primes[1] denotes a prime number
