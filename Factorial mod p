@@ -1,0 +1,9 @@
+int fact(int n,int p){
+    int res=1;
+    FOR(i,1,n+1){
+        res= (  (res%p)  *  (i%p)  ) % p ;
+    }
+    return res;
+}
+
+KUCH NAHI DIYA HO TOH p=mod
