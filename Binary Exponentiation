@@ -11,3 +11,5 @@ int binaryexpo(int a , int n){
     return res;
 }
 POWER ( A^N )
+TIME COMPLEXITY
+O(log n)
