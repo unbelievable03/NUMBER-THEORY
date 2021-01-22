@@ -1,37 +1,23 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define         int                 long long
-#define         pb                  push_back
-#define         all(x)              (x).begin(),(x).end()
-#define         sz(x)               (int)((x).size())
-#define         FOR(i,a,b)          for(int i=a;i<b;i++)
-#define         vi                  vector<int>
-#define         mod                 1000000007
-#define         endl                "\n"
-#define         N                   101
-#define         fr(i,num)           for(int i=1;i<=num;i++)
 int A[N][N],I[N][N];
-void mult(int I[][N],int A[][N],int dim)
-{
+void mult(int I[][N],int A[][N],int dim){
     int res[dim+1][dim+1];
-    fr(i,dim){
-        fr(j,dim){
+    FOR(i,1,dim+1){
+        FOR(j,1,dim+1){
             res[i][j]=0;
-            fr(k,dim){
+            FOR(k,1,dim+1){
                 res[i][j]+= I[i][k]*A[k][j];
             }
         }
     }
-    fr(i,dim){
-        fr(j,dim){
+    FOR(i,1,dim+1){
+        FOR(j,1,dim+1){
             I[i][j]=res[i][j];
         }
     }
 }
-void power(int A[][N],int dim, int n)
-{
-    fr(i,dim){
-        fr(j,dim){
+void power(int A[][N],int dim, int n){
+    FOR(i,1,dim+1){
+        FOR(j,1,dim+1){
             if(i==j){I[i][j]=1;}
             else{I[i][j]=0;}
         }
@@ -47,29 +33,18 @@ void power(int A[][N],int dim, int n)
         }
     }
 }
-void solve()
-{
+
     int dim,n;
     cin>>dim>>n;
-    fr(i,dim){
-        fr(j,dim){
+    FOR(i,1,dim+1){.       // given matrix whose exponent is to be calculated
+        FOR(j,1,dim+1){
             cin>>A[i][j];
         }
     }
-    power(A,dim,n);
-    fr(i,dim){
-        fr(j,dim){
+    power(A,dim,n);        // calling power function and the exponentiated matrix is stored in I;
+    FOR(i,1,dim+1){
+        FOR(j,1,dim+1){
             cout<<I[i][j]<<" ";
         }
         cout<<endl;
     }
-}
-signed main()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);cout.tie(0);
-    int T=1;
-    //cin>>T;
-    while(T--){solve();}
-    return 0;
-}
