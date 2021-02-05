@@ -1,15 +1,16 @@
 int power(int a , int n, int p){
-    int res=1;
-    while(n) {
-       if(n%2==0) {
-           a= (a*a)%p; n=n/2;
-       }
-        else if (n%2!=0){
-            res= (res*a)%p;  n--;
-        }
-    }
-    return res;
+	int res=1;
+	while(n) {
+		if(n%2==0) {
+			a= (a*a)%p; n=n/2;
+		}
+		else if (n%2!=0){
+			res= (res*a)%p;  n--;
+		}
+	}
+	return res;
 }
+
 POWER ( A^N)%P
 TIME COMPLEXITY
 O(log n)
